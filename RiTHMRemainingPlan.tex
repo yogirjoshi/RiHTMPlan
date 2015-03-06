@@ -1,6 +1,7 @@
 \documentclass[]{article}
 \usepackage[nodayofweek,level]{datetime}
-\newcommand{\rithm}{\textit{RiTHM}}
+\usepackage{hyperref}
+\newcommand{\rithm}{\textbf{RiTHM}\space}
 % Title Page
 \title{ Plan for deliverables of \textbf{RiTHM} Development and Journal Paper}
 \author{Yogi Joshi}
@@ -9,35 +10,117 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-Bi-weekly plan for deliverables
-\end{abstract}
+\section{Current Results}
+Following items have been implemented
+\begin{itemize}
+	\item \rithm Parser APIs - The interfaces and abstract classes for parser API, which can be called by other \rithm components along with examples of the parser developed using the APIs  including LTL, PTLTL parser which are added to the framework. The code is at \url{https://github.com/yogirjoshi/Parser}
+	\item \rithm Monitor APIs - The interfaces and abstract classes for Monitor APIs. Example implementations of the interface include LTL Monitor, MTL monitor (work in progress). The code is at \url{https://github.com/yogirjoshi/MonitorFactory}	
+	\item \rithm Data Tools - The APIs allow to input trace data to \rithm in various formats such as XML and CSV. The code is at \url{https://github.com/yogirjoshi/DataFactory}
+	\item \rithm Network Interface - Allows to connect to a \rithm instance using a \rithm protocol which is coded over top of TCP. The scripts are being tested. Th\url{https://github.com/yogirjoshi/RiTHMServer}
+	\item The above components interact with each other for providing a monitoring framework, and dynamically classes are loaded using Java's class-loader to allow loading plugins (which implement required \rithm interfaces) from the jars. 
+	\item \rithm Plots - The offline plots are developed using gglplot2. The scripts to be exposed via web interface to render PNG file in html. Upgrade of this functionality is in progress to use \textit{Shiny} to render plots.
+\end{itemize}
 \section{Proposed Schedule}
-\subsection{Sprint 1}
-\textbf{Target Date:}\space \formatdate{13}{3} {2015}\newline
+\subsection{Development Sprint 1}
+\textbf{Target Date:}\space \formatdate{15}{3} {2015}\newline
 \textbf{Description:} MTL Monitor \& Monitor Plugin using \rithm APIs for MTL (Metric Temporal Logic)\newline
-\textbf{Goals:}\newline
-\begin{tabular}{|c|}
-\hline
-Develop and integrate Monitor Pluign using \rithm Monitor API\\
-\hline
-Develop Unit Test Cases for above Monitor Plugin\\
-\hline
-Run Test cases with MTL properties for QNX Traces\\
-\end{tabular}
+\textbf{Goals:}
+\begin{itemize}
+\item Develop and integrate Monitor Pluign using \rithm Monitor API
+\item Develop Unit Test Cases for above Monitor Plugin
+\item Run Test cases with MTL properties for QNX Traces\\
+\end{itemize}
 
-\subsection{Sprint 2}
-\textbf{Target Date:}\space \formatdate{13}{3} {2015}\newline
-\textbf{Description:} MTL Monitor \& Monitor Plugin using \rithm APIs for MTL (Metric Temporal Logic)\newline
-\textbf{Goals:}\newline
-\begin{tabular}{|c|}
-\hline
-Develop and integrate Monitor Pluign using \rithm Monitor API\\
-\hline
-Develop Unit Test Cases for above Monitor Plugin\\
-\hline
-Run Test cases with MTL properties for QNX Traces\\
-\end{tabular}
+\subsection{Development Sprint 2}
+\textbf{Target Date:}\space \formatdate{27}{3} {2015}\newline
+\textbf{Description:} \rithm Plugin Loader extension,  its GUI and Journal Paper - lessons learnt\newline
+\textbf{Goals:}
+\begin{itemize}
+\item
+Develop and integrate Plugin Loader into current framework
+\item
+Currently, we point JARs and RiTHM Searches for plugin classes in those JARs
+\item
+Goal is to create a separate plugin-loader factory class which allow selecting plugins and this functionality can be
+easily exposed in GUI
+\item
+Lessons learnt from CSRV'14 competition shall be a section in Journal Paper, Goal is to create a draft of the lessons learnt section; 
+ 
+\end{itemize}
 
+\subsection{Development Sprint 3}
+\textbf{Target Date:}\space \formatdate{09}{4} {2015}\newline
+\textbf{Description:} Document \rithm examples for plugin development, and Journal Paper - RiTHM design section\newline
+\textbf{Goals:}
+\begin{itemize}
+	\item
+	Create 'Developer's Manual' which contains examples of how to develop different plugins - Monitor, DataTools, Parser, Network Interface.
+	\item
+	To include examples, documentation of existing framework's APIs, interfaces, abstract classes, class interaction, etc.
+	\item
+	Create a draft of \rithm's architecture and design for the journal paper. Detailed design of abstract components for addressing Runtime Verification problem and modeling their interaction.
+	\item
+	Discuss current monitoring tools and methods used in Software Engineering processes and their limitations, and how \rithm addresses these limitations - advantages of \rithm framework over over Test Driven Development methodology, Monitoring Tools for Enterprise Applications; 
+	\item
+	Develop GUI web components for previous sprints. 
+\end{itemize}
+
+\subsection{Development Sprint 4}
+\textbf{Target Date:}\space \formatdate{21}{4} {2015}\newline
+\textbf{Description:} Add runtime plots to \rithm using matplotlib of python. Currently, we have offline plots which use ggplot2 \newline
+\textbf{Goals:}
+\begin{itemize}
+	\item
+	Create python class framework which receives data feed from monitor(possibly over network) and plots the truth-values of formulae over time.
+	\item
+	Currently, we have RiTHM-Protocol (on top of TCP) for communicating with RiTHM server's components over network. The protocol will be extended to add messages for additional plotting.
+	\item
+	\rithm journal paper's section to be delivered - Implementation details, introduction, abstract, conclusion
+\end{itemize}
+
+
+\subsection{Development Sprint 5}
+\textbf{Target Date:}\space \formatdate{05}{5}{2015}\newline
+\textbf{Description:} Add GPU monitoring functionality using JCuda, CUDA wrapper for Java \newline
+\textbf{Goals:}
+\begin{itemize}
+	\item
+	Ability to offload predicate evaluation to GPUs
+	\item
+	Update jorunal version as per feedback
+	\item
+	Complete development of any of the remaining items in previous sprints.
+	\item
+	Develop GUI web components for previous sprints. 
+\end{itemize}
+
+\subsection{Development Sprint 6}
+\textbf{Target Date:}\space \formatdate{20}{5} {2015}\newline
+\textbf{Description:} Case-studies' section in \rithm journal paper \newline
+\textbf{Goals:}
+\begin{itemize}
+	\item
+	Deliver case-studies for \rithm framework. Monitoring different logics ( LTL, MTL, FOMTL) - online and offline.
+	\item
+	Possible examples: QNX System Call Traces, Traces from CSRV'14 competitions from various tools, etc.
+	\item
+	Add case studies to journal paper as well as to the Developers' manual of \rithm
+	\item
+	Develop GUI web components for previous sprints. 
+\end{itemize}
+
+\subsection{Development Sprint 7}
+\textbf{Target Date:}\space \formatdate{31}{5} {2015}\newline
+\textbf{Description:} \rithm Journal paper submission \newline
+\textbf{Goals:}
+\begin{itemize}
+	\item
+	Complete journal paper
+	\item
+	\rithm 2.0 public release 
+	\item
+	Release will include Developer's manual, User's manual and screen-cast (with audio) on \rithm's website.
+
+\end{itemize}
 
 \end{document}          
