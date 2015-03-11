@@ -13,14 +13,17 @@
 \section{Current Results}
 Following items have been implemented
 \begin{itemize}
+	\item
+	\textbf{Thesis} chapters associated with the journal paper contents will be written at same time along with journal paper sections (as described below) and are submitted for review to Sebastian
+	\item
+	\textbf{Thesis} corrections by committee members will be discussed with Sebastian and they shall be taken care in accordance with Sebastian's suggestions on whether the corrections are required in \textbf{thesis} chapter.
 	\item \rithm Parser APIs - The interfaces and abstract classes for parser API, which can be called by other \rithm components along with examples of the parser developed using the APIs  including LTL, PTLTL parser which are added to the framework. The code is at \url{https://github.com/yogirjoshi/Parser}
 	\item \rithm Monitor APIs - The interfaces and abstract classes for Monitor APIs. Example implementations of the interface include LTL Monitor, MTL monitor (work in progress). The code is at \url{https://github.com/yogirjoshi/MonitorFactory}	
 	\item \rithm Data Tools - The APIs allow to input trace data to \rithm in various formats such as XML and CSV. The code is at \url{https://github.com/yogirjoshi/DataFactory}
 	\item \rithm Network Interface - Allows to connect to a \rithm instance using a \rithm protocol which is coded over top of TCP. The scripts are being tested. Th\url{https://github.com/yogirjoshi/RiTHMServer}
 	\item The above components interact with each other for providing a monitoring framework, and dynamically classes are loaded using Java's class-loader to allow loading plugins (which implement required \rithm interfaces) from the jars. 
 	\item \rithm Plots - The offline plots are developed using gglplot2. The scripts to be exposed via web interface to render PNG file in html. Upgrade of this functionality is in progress to use \textit{Shiny} to render plots.
-	\item
-	\textbf{Thesis} topics associated with the journal paper contents will be written at same time along with journal paper sections 
+
 \end{itemize}
 \section{Proposed Schedule}
 \subsection{Development Sprint 1}
